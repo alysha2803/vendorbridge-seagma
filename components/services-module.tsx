@@ -16,8 +16,12 @@ import {
   Award,
   DollarSign,
   Clock,
+  FileText,
+  Building2,
+  Shield,
 } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
+import { useFAMAPrices } from "@/lib/hooks/useFAMAPrices"
 import Image from "next/image"
 
 interface ServicesModuleProps {
@@ -64,64 +68,41 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
 
   const renderGovernmentServices = () => (
     <div className="space-y-6">
-      {/* Financial Readiness Progress */}
-      <Card className="bg-white">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="w-5 h-5" />
-            Financial Readiness Progress
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            <div className="flex items-center justify-between">
-              <span>Loan Eligibility</span>
-              <Badge className="bg-yellow-100 text-yellow-800">Silver Level - 68%</Badge>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-3">
-              <div className="bg-accent-cyan h-3 rounded-full" style={{ width: "68%" }}></div>
-            </div>
-            <div className="text-sm text-gray-600">
-              Log consistent sales for 2 more months to reach Gold level and unlock premium loan options.
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Available Support */}
+      {/* Government Services Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card className="bg-white">
           <CardHeader>
-            <CardTitle>Recommended Microloans</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <Building2 className="w-5 h-5" />
+              Business & Licensing Services
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="border rounded-lg p-4">
-              <div className="flex justify-between items-start mb-2">
-                <h4 className="font-semibold">SME Micro Financing</h4>
-                <Badge className="bg-green-100 text-green-800">Eligible</Badge>
-              </div>
-              <div className="text-sm text-gray-600 mb-3">Up to RM 50,000 • 3.5% interest</div>
-              <Button size="sm" className="bg-primary-dark hover:bg-primary-dark/90 text-white">
-                Apply Now
-              </Button>
-            </div>
-
-            <div className="border rounded-lg p-4">
-              <div className="flex justify-between items-start mb-2">
-                <h4 className="font-semibold">Hawker Development Fund</h4>
-                <Badge className="bg-yellow-100 text-yellow-800">Pending</Badge>
-              </div>
-              <div className="text-sm text-gray-600 mb-3">Up to RM 25,000 • 2.8% interest</div>
-              <Button size="sm" variant="outline" className="border-primary-dark text-primary-dark bg-transparent">
-                View Requirements
-              </Button>
-            </div>
+            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Business License Renewal
+            </Button>
+            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              SSM Registration Services
+            </Button>
+            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Local Council Permits
+            </Button>
+            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Health Department Compliance
+            </Button>
           </CardContent>
         </Card>
 
         <Card className="bg-white">
           <CardHeader>
-            <CardTitle>Government Services</CardTitle>
+            <CardTitle className="flex items-center gap-2">
+              <FileText className="w-5 h-5" />
+              Tax & Compliance Services
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
@@ -130,19 +111,49 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
             </Button>
             <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
               <ExternalLink className="w-4 h-4 mr-2" />
-              Business License Renewal
+              SST Registration
             </Button>
             <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
               <ExternalLink className="w-4 h-4 mr-2" />
-              Subsidy Applications
+              Tax Filing Support
             </Button>
             <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
               <ExternalLink className="w-4 h-4 mr-2" />
-              Health Department Compliance
+              EPF & SOCSO Registration
             </Button>
           </CardContent>
         </Card>
       </div>
+
+      {/* Additional Services */}
+      <Card className="bg-white">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Shield className="w-5 h-5" />
+            Safety & Standards
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Button className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Food Safety Certification
+            </Button>
+            <Button className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Weights & Measures Compliance
+            </Button>
+            <Button className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Fire Safety Inspection
+            </Button>
+            <Button className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Environmental Compliance
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 
@@ -352,60 +363,107 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
     </div>
   )
 
-  const renderPriceAlerts = () => (
-    <div className="h-[calc(100vh-12rem)] overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
-        <Card className="bg-white">
-          <CardHeader>
+  const renderPriceAlerts = () => {
+    const { prices, loading, error, lastUpdated } = useFAMAPrices()
+    
+    return (
+      <div className="h-[calc(100vh-12rem)] overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+          <Card className="bg-white flex flex-col">
+            <CardHeader className="flex-shrink-0">
+              <CardTitle className="flex items-center gap-2">
+                <Bell className="w-5 h-5" />
+                Active Price Alerts
+                {lastUpdated && (
+                  <span className="text-xs text-gray-500 ml-auto">
+                    Updated: {new Date(lastUpdated).toLocaleTimeString()}
+                  </span>
+                )}
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="flex-1 overflow-y-auto">
+              {loading ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-dark"></div>
+                  <span className="ml-2">Loading FAMA prices...</span>
+                </div>
+              ) : error ? (
+                <div className="text-center py-8">
+                  <div className="text-red-600 mb-2">⚠️ {error}</div>
+                  <div className="text-sm text-gray-600">Using cached data</div>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {prices.map((price, index) => (
+                    <div
+                      key={index}
+                      className={`border rounded-lg p-4 ${price.trend === "up" ? "border-red-200 bg-red-50" : "border-green-200 bg-green-50"}`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h4 className="font-semibold">{price.commodity}</h4>
+                          <div className="text-lg font-bold">{price.currentPrice}</div>
+                          <div className="text-xs text-gray-500">{price.unit}</div>
+                        </div>
+                        <div className={`text-right ${price.trend === "up" ? "text-red-600" : "text-green-600"}`}>
+                          <div className="font-semibold">{price.change}</div>
+                          <div className="text-sm">vs last week</div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+        <Card className="bg-white flex flex-col">
+          <CardHeader className="flex-shrink-0">
             <CardTitle className="flex items-center gap-2">
-              <Bell className="w-5 h-5" />
-              Active Price Alerts
+              <TrendingUp className="w-5 h-5" />
+              Market Insights & Tips
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="flex-1 overflow-y-auto">
             <div className="space-y-4">
-              {[
-                { item: "Rice (10kg)", current: "RM 28.50", change: "+5%", trend: "up" },
-                { item: "Cooking Oil (5L)", current: "RM 22.00", change: "-2%", trend: "down" },
-                { item: "Chicken (1kg)", current: "RM 9.80", change: "+8%", trend: "up" },
-                { item: "Onions (1kg)", current: "RM 4.50", change: "+12%", trend: "up" },
-              ].map((alert, index) => (
-                <div
-                  key={index}
-                  className={`border rounded-lg p-4 ${alert.trend === "up" ? "border-red-200 bg-red-50" : "border-green-200 bg-green-50"}`}
-                >
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <h4 className="font-semibold">{alert.item}</h4>
-                      <div className="text-lg font-bold">{alert.current}</div>
-                    </div>
-                    <div className={`text-right ${alert.trend === "up" ? "text-red-600" : "text-green-600"}`}>
-                      <div className="font-semibold">{alert.change}</div>
-                      <div className="text-sm">vs last week</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-white">
-          <CardHeader>
-            <CardTitle>Pricing Recommendations</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                <div className="font-semibold text-yellow-800">⚠️ Consider Price Adjustment</div>
-                <div className="text-sm text-yellow-700 mt-1">
-                  Rice prices increased 5%. Consider adjusting your nasi lemak price by RM 0.50 to maintain margins.
-                </div>
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <h4 className="font-semibold text-blue-800 mb-2">💡 Smart Pricing Tip</h4>
+                <p className="text-sm text-blue-700">
+                  Monitor FAMA price trends to optimize your purchasing timing. 
+                  Buy when prices are low and adjust your menu prices accordingly.
+                </p>
               </div>
+              
               <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                <div className="font-semibold text-green-800">✅ Good Opportunity</div>
-                <div className="text-sm text-green-700 mt-1">
-                  Cooking oil prices dropped 2%. You can maintain current prices and improve profit margins.
+                <h4 className="font-semibold text-green-800 mb-2">📈 Market Trend</h4>
+                <p className="text-sm text-green-700">
+                  Track seasonal patterns in vegetable prices. Plan your menu 
+                  around seasonal availability for better cost management.
+                </p>
+              </div>
+              
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                <h4 className="font-semibold text-yellow-800 mb-2">⚠️ Price Alert</h4>
+                <p className="text-sm text-yellow-700">
+                  Set up alerts for your key ingredients. FAMA data updates 
+                  regularly to help you make informed purchasing decisions.
+                </p>
+              </div>
+              
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mt-4">
+                <div className="flex items-center gap-2 text-xs text-gray-600">
+                  <span>📊 Data Source:</span>
+                  <a 
+                    href="https://www.fama.gov.my/harga-pasaran-terkini" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-primary-dark hover:underline"
+                  >
+                    FAMA - Federal Agricultural Marketing Authority
+                  </a>
+                </div>
+                <div className="text-xs text-gray-500 mt-1">
+                  Prices updated every 5 minutes from official government sources
                 </div>
               </div>
             </div>
@@ -414,6 +472,7 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
       </div>
     </div>
   )
+  }
 
   const renderCommunityUpdates = () => (
     <div className="h-[calc(100vh-12rem)] overflow-hidden">

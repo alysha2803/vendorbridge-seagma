@@ -31,16 +31,19 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
         <div className="flex-1 flex items-center justify-end px-16">
           <div className="text-right space-y-8 max-w-3xl">
             <div className="space-y-4">
-              <h1 className="text-5xl font-bold text-white text-balance drop-shadow-lg">{t("welcome.title")}</h1>
+              <h1 className="text-5xl font-bold text-blue-900 text-balance drop-shadow-lg">{t("welcome.title")}</h1>
               <p className="text-3xl text-white italic text-balance drop-shadow-lg">{t("welcome.subtitle")}</p>
             </div>
 
-            <Button
-              onClick={onStart}
-              className="bg-primary-dark hover:bg-primary-dark/90 text-white px-12 py-6 text-xl rounded-full shadow-xl"
-            >
-              {t("welcome.button")}
-            </Button>
+            <div className="space-y-2">
+              <Button
+                onClick={onStart}
+                className="bg-primary-dark hover:bg-primary-dark/90 text-white px-12 py-6 text-xl rounded-full shadow-xl"
+              >
+                {t("welcome.button")}
+              </Button>
+              <p className="text-white italic text-center text-lg drop-shadow-lg">Klik skrin untuk mula</p>
+            </div>
           </div>
         </div>
       </div>

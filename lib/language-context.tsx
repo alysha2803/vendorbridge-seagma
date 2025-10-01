@@ -44,7 +44,7 @@ const translations = {
     // Dashboard Cards
     "card.sales": "Your Sales",
     "card.government": "Government Services",
-    "card.loans": "Loans & Incentives",
+    "card.loans": "Financial Aid",
     "card.price": "Price Alerts",
     "card.community": "Community Updates",
     "card.training": "Training",
@@ -71,7 +71,7 @@ const translations = {
 
     // Services Module
     "services.government.title": "Government Services",
-    "services.loans.title": "Loans & Incentives",
+    "services.loans.title": "Financial Aid",
     "services.price.title": "Price Alerts",
     "services.community.title": "Community Updates",
     "services.training.title": "Training",
@@ -131,6 +131,17 @@ const translations = {
     "training.food.desc": "Get certified in food handling and safety practices",
     "training.food.date": "Date: 30 March 2024, 9:00 AM",
     "training.register": "Register Now",
+
+    // Financial Aid Profile
+    "profile.business_registration": "Business Registration",
+    "profile.monthly_revenue": "Monthly Revenue",
+    "profile.credit_score": "Credit Score",
+    "profile.business_age": "Business Age",
+    "profile.tax_compliance": "Tax Compliance",
+    "profile.bank_account": "Bank Account",
+    "profile.application_profile": "Application Profile",
+    "profile.eligible_subsidies": "Eligible Subsidies and Incentives",
+    "profile.featured_loans": "Featured Loan Programs",
   },
   malay: {
     // Welcome Screen
@@ -165,7 +176,7 @@ const translations = {
     // Dashboard Cards
     "card.sales": "Jualan Anda",
     "card.government": "Perkhidmatan Kerajaan",
-    "card.loans": "Pinjaman & Insentif",
+    "card.loans": "Bantuan Kewangan",
     "card.price": "Amaran Harga",
     "card.community": "Kemas Kini Komuniti",
     "card.training": "Latihan",
@@ -192,7 +203,7 @@ const translations = {
 
     // Services Module
     "services.government.title": "Perkhidmatan Kerajaan",
-    "services.loans.title": "Pinjaman & Insentif",
+    "services.loans.title": "Bantuan Kewangan",
     "services.price.title": "Amaran Harga",
     "services.community.title": "Kemas Kini Komuniti",
     "services.training.title": "Latihan",
@@ -253,6 +264,17 @@ const translations = {
     "training.food.desc": "Dapatkan sijil dalam pengendalian dan amalan keselamatan makanan",
     "training.food.date": "Tarikh: 30 Mac 2024, 9:00 Pagi",
     "training.register": "Daftar Sekarang",
+
+    // Financial Aid Profile
+    "profile.business_registration": "Pendaftaran Perniagaan",
+    "profile.monthly_revenue": "Pendapatan Bulanan",
+    "profile.credit_score": "Skor Kredit",
+    "profile.business_age": "Umur Perniagaan",
+    "profile.tax_compliance": "Pematuhan Cukai",
+    "profile.bank_account": "Akaun Bank",
+    "profile.application_profile": "Profil Permohonan",
+    "profile.eligible_subsidies": "Subsidi dan Insentif Layak",
+    "profile.featured_loans": "Program Pinjaman Pilihan",
   },
 }
 

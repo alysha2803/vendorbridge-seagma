@@ -109,9 +109,10 @@ VendorBridge establishes a reliable, human-assisted interface between market ven
 - **🌐 Multilingual Support**: English and Bahasa Malaysia interface
 - **📊 Sales Management**: Track daily sales and generate reports
 - **🏛️ Government Services**: Direct access to official services and applications
-- **💰 Financial Services**: Loan applications and incentive programs
+- **💰 Financial Aid Services**: Comprehensive financial assistance, subsidies, and microloan applications
 - **📈 Market Intelligence**: Price alerts and market trend updates
 - **👥 Community Features**: Training programs and vendor community updates
+- **🎨 Modern Kiosk Interface**: Touch-optimized UI with prominent icons and intuitive navigation
 
 ## 📊 Impact & Transformation
 
@@ -147,12 +148,13 @@ graph TD
 
 ### Core Components
 
-1. **Welcome Screen**: Bilingual introduction with market-themed background
-2. **Authentication Flow**: MyKad card insertion → Fingerprint verification
-3. **Main Dashboard**: Central hub for all vendor services
-4. **Sales Module**: Daily sales tracking and reporting
-5. **Services Module**: Government services, loans, and incentives
-6. **Community Module**: Training, updates, and vendor networking
+1. **Welcome Screen**: Bilingual introduction with authentic Malaysian market background imagery
+2. **Authentication Flow**: MyKad card insertion with visual guidance → Fingerprint verification
+3. **Main Dashboard**: Central hub with prominent icon-based navigation and touch-optimized interface
+4. **Sales Module**: Daily sales tracking and reporting with visual analytics
+5. **Financial Aid Module**: Comprehensive application profile, eligible subsidies, and featured loan programs
+6. **Government Services**: Direct access to official services and applications
+7. **Community Module**: Training programs, updates, and vendor networking
 
 ## 🏗️ Software Architecture
 
@@ -436,12 +438,24 @@ npm run lint     # Run ESLint
 - **Accessibility**: High contrast, clear typography
 - **Multilingual**: Seamless language switching
 - **Offline-Ready**: Core functionality without internet dependency
+- **Icon-Centric Navigation**: Prominent visual icons for easy recognition
+- **Consistent Alignment**: Uniform button heights and spacing
 
 ### Visual Identity
-- **Color Scheme**: Professional blue and white palette
+- **Color Scheme**: Professional blue and white palette with accent colors
 - **Typography**: Clear, readable fonts optimized for screens
-- **Imagery**: Authentic Malaysian market scenes
+- **Imagery**: Authentic Malaysian market scenes and vendor-focused photography
 - **Branding**: VendorBridge logo with handshake symbolism
+- **Icon Design**: Custom iconography for each service module
+- **Layout**: Grid-based design with prominent icon placement above text buttons
+
+### Interface Enhancements
+- **Prominent Icons**: 120x120px icons positioned above text buttons for better visual hierarchy
+- **Compact Buttons**: Optimized button sizing (h-16) for efficient screen space usage
+- **Visual Guidance**: MyKad insertion guidance with actual card imagery
+- **Financial Aid Dashboard**: Comprehensive application profile with institutional logos (SSM, CTOS, LHDN, Maybank)
+- **Scrollable Content**: Vertical scrolling for eligible subsidies, horizontal scrolling for featured programs
+- **Non-scrollable Pages**: Fixed viewport design ensuring all content fits on single screen
 
 ## 🔧 Customization
 
@@ -483,13 +497,7 @@ NEXT_PUBLIC_ENVIRONMENT=production
 - **Bundle Analysis**: Built-in bundle analyzer
 - **Caching**: Optimized caching strategies
 
-## 💰 Funding & Partnerships
-
-### First-Year Implementation
-**Estimated Cost**: USD 120,000 (RM ~570,000)
-- Kiosk hardware, software, and AI development
-- Youth agent training and cloud services
-- Field operations for 10-location pilot
+## 💰 Partnerships
 
 ### Strategic Funders
 - **Bank Negara Malaysia**: Financial Sector Blueprint 2022–2026 digital inclusion mandate
@@ -503,7 +511,7 @@ NEXT_PUBLIC_ENVIRONMENT=production
 3. **Public Pilot**: Launch to validate real-world impact
 4. **Institutional Support**: Leverage Universiti Malaya and smart city initiatives
 
-### Measurable Impact (12-18 months)
+### Measurable Impact
 - Number of vendors onboarded
 - Volume of digital sales logs generated
 - Uptake of subsidies and microloans
@@ -543,6 +551,9 @@ This prototype was developed with the assistance of AI tools to accelerate the d
 - **UI Components**: Automated generation of accessible, responsive components
 - **Documentation**: AI-generated comprehensive README and code comments
 - **Optimization**: Performance suggestions and best practice implementations
+- **UI/UX Enhancements**: Icon placement optimization, layout improvements, and responsive design
+- **Internationalization**: Translation key management and bilingual content support
+- **Visual Design**: Image optimization, background removal, and layout refinements
 
 ### Human Oversight
 - **Design Decisions**: All design choices and user experience decisions made by human developers
@@ -558,3 +569,6 @@ We believe in transparent development practices. While AI tools accelerated our 
 **Built with ❤️ by team SEAgma for Malaysian market vendors**
 
 *Empowering local businesses through technology*
+
+*APRU Tech Policy Hackathon 2025*
+

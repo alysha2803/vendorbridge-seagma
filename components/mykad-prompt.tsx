@@ -4,6 +4,7 @@ import { useState } from "react"
 import Header from "@/components/header"
 import { CreditCard } from "lucide-react"
 import { useLanguage } from "@/lib/language-context"
+import Image from "next/image"
 
 interface MyKadPromptProps {
   onCardInserted: () => void
@@ -38,7 +39,13 @@ export default function MyKadPrompt({ onCardInserted }: MyKadPromptProps) {
               onClick={handleCardDetection}
             >
               <div className="text-center">
-                <CreditCard className="w-24 h-24 mx-auto text-primary-dark mb-4" />
+                <Image 
+                  src="/mykad.png" 
+                  alt="MyKad Card" 
+                  width={200} 
+                  height={120} 
+                  className="mx-auto mb-4 object-contain"
+                />
                 <div className="text-lg font-semibold text-primary-dark">Insert MyKad Here</div>
                 <div className="text-sm text-gray-600 mt-2">Card reader slot</div>
               </div>

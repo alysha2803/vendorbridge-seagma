@@ -4,9 +4,11 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Header from "@/components/header"
-import { Camera, QrCode, TrendingUp, Eye, Mail, MessageCircle } from "lucide-react"
+import { Camera, QrCode, TrendingUp, Eye, Mail, MessageCircle, Upload, CheckCircle } from "lucide-react"
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts"
 import { useLanguage } from "@/lib/language-context"
+import CameraCapture from "@/components/camera-capture"
+import { processLogbookImage, convertToSalesData, ExtractedTransaction } from "@/lib/ai-text-extraction"
 
 interface SalesModuleProps {
   onBack: () => void
@@ -32,7 +34,72 @@ const recentTransactions = [
 
 export default function SalesModule({ onBack }: SalesModuleProps) {
   const [activeTab, setActiveTab] = useState("dashboard")
+  const [showCamera, setShowCamera] = useState(false)
+  const [isProcessing, setIsProcessing] = useState(false)
+  const [extractedData, setExtractedData] = useState<any>(null)
+  const [salesStats, setSalesStats] = useState({
+    totalSales: "RM 1,247.50",
+    cashTransactions: 23,
+    cashAmount: "RM 687.50",
+    qrTransactions: 18,
+    qrAmount: "RM 560.00"
+  })
+  const [currentTransactions, setCurrentTransactions] = useState(recentTransactions)
   const { t } = useLanguage()
+
+  const handleCameraCapture = async (imageData: string) => {
+    setIsProcessing(true)
+    try {
+      const result = await processLogbookImage(imageData)
+      
+      if (result.success && result.data) {
+        const convertedData = convertToSalesData(result.data)
+        
+        // Add to existing sales statistics instead of replacing
+        const currentTotal = parseFloat(salesStats.totalSales.replace('RM ', ''))
+        const newTotal = parseFloat(convertedData.totalSales.replace('RM ', ''))
+        const updatedTotal = currentTotal + newTotal
+        
+        const currentCashAmount = parseFloat(salesStats.cashAmount.replace('RM ', ''))
+        const newCashAmount = parseFloat(convertedData.cashAmount.replace('RM ', ''))
+        const updatedCashAmount = currentCashAmount + newCashAmount
+        
+        const currentQrAmount = parseFloat(salesStats.qrAmount.replace('RM ', ''))
+        const newQrAmount = parseFloat(convertedData.qrAmount.replace('RM ', ''))
+        const updatedQrAmount = currentQrAmount + newQrAmount
+        
+        // Update sales statistics by adding new data to existing
+        setSalesStats({
+          totalSales: `RM ${updatedTotal.toFixed(2)}`,
+          cashTransactions: salesStats.cashTransactions + convertedData.cashTransactions,
+          cashAmount: `RM ${updatedCashAmount.toFixed(2)}`,
+          qrTransactions: salesStats.qrTransactions + convertedData.qrTransactions,
+          qrAmount: `RM ${updatedQrAmount.toFixed(2)}`
+        })
+        
+        // Add new transactions to the beginning of existing transactions
+        const newTransactions = [...convertedData.recentTransactions, ...currentTransactions].slice(0, 5)
+        setCurrentTransactions(newTransactions)
+        
+        // Store extracted data for reference
+        setExtractedData(result.data)
+        
+        // Switch to dashboard to show updated data
+        setActiveTab("dashboard")
+        
+        // Show success message (you could add a toast notification here)
+        console.log('Logbook data successfully extracted and added to existing sales!')
+      } else {
+        console.error('Failed to extract logbook data:', result.error)
+        // You could show an error toast here
+      }
+    } catch (error) {
+      console.error('Error processing logbook:', error)
+    } finally {
+      setIsProcessing(false)
+      setShowCamera(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-neutral-light flex flex-col">
@@ -85,10 +152,10 @@ export default function SalesModule({ onBack }: SalesModuleProps) {
                       <CardTitle className="text-sm text-gray-600">{t("sales.today")}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-3xl font-bold text-primary-dark">RM 1,247.50</div>
+                      <div className="text-3xl font-bold text-primary-dark">{salesStats.totalSales}</div>
                       <div className="text-sm text-green-600 flex items-center gap-1">
                         <TrendingUp className="w-4 h-4" />
-                        +12% from yesterday
+                        {extractedData ? 'Updated from logbook' : '+12% from yesterday'}
                       </div>
                     </CardContent>
                   </Card>
@@ -98,8 +165,8 @@ export default function SalesModule({ onBack }: SalesModuleProps) {
                       <CardTitle className="text-sm text-gray-600">{t("sales.cash")}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-3xl font-bold text-primary-dark">23</div>
-                      <div className="text-sm text-gray-500">RM 687.50</div>
+                      <div className="text-3xl font-bold text-primary-dark">{salesStats.cashTransactions}</div>
+                      <div className="text-sm text-gray-500">{salesStats.cashAmount}</div>
                     </CardContent>
                   </Card>
 
@@ -108,8 +175,8 @@ export default function SalesModule({ onBack }: SalesModuleProps) {
                       <CardTitle className="text-sm text-gray-600">{t("sales.qr")}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-3xl font-bold text-primary-dark">18</div>
-                      <div className="text-sm text-gray-500">RM 560.00</div>
+                      <div className="text-3xl font-bold text-primary-dark">{salesStats.qrTransactions}</div>
+                      <div className="text-sm text-gray-500">{salesStats.qrAmount}</div>
                     </CardContent>
                   </Card>
                 </div>
@@ -148,7 +215,7 @@ export default function SalesModule({ onBack }: SalesModuleProps) {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    {recentTransactions.map((transaction, index) => (
+                    {currentTransactions.map((transaction, index) => (
                       <div
                         key={index}
                         className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0"
@@ -186,9 +253,25 @@ export default function SalesModule({ onBack }: SalesModuleProps) {
                   <Button
                     variant="outline"
                     className="w-full py-6 text-lg flex items-center gap-2 border-primary-dark text-primary-dark hover:bg-primary-dark/5 bg-transparent"
+                    onClick={() => setShowCamera(true)}
+                    disabled={isProcessing}
                   >
-                    <Camera className="w-5 h-5" />
-                    {t("sales.upload")}
+                    {isProcessing ? (
+                      <>
+                        <Upload className="w-5 h-5 animate-spin" />
+                        Processing...
+                      </>
+                    ) : extractedData ? (
+                      <>
+                        <CheckCircle className="w-5 h-5 text-green-600" />
+                        Logbook Processed
+                      </>
+                    ) : (
+                      <>
+                        <Camera className="w-5 h-5" />
+                        {t("sales.upload")}
+                      </>
+                    )}
                   </Button>
 
                   <div className="text-sm text-gray-600 bg-blue-50 p-3 rounded-lg">
@@ -327,6 +410,15 @@ Generated by VendorBridge Kiosk System`;
           )}
         </div>
       </div>
+      
+      {/* Camera Capture Modal */}
+      {showCamera && (
+        <CameraCapture
+          onCapture={handleCameraCapture}
+          onClose={() => setShowCamera(false)}
+          isProcessing={isProcessing}
+        />
+      )}
     </div>
   )
 }

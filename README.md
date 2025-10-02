@@ -107,12 +107,13 @@ VendorBridge establishes a reliable, human-assisted interface between market ven
 
 - **🔐 Secure Authentication**: MyKad integration with fingerprint verification
 - **🌐 Multilingual Support**: English and Bahasa Malaysia interface
-- **📊 Sales Management**: Track daily sales and generate reports with WhatsApp integration
+- **📊 Sales Management**: Track daily sales and generate reports with WhatsApp integration and AI-powered logbook scanning
 - **🏛️ Government Services**: Direct access to official services and applications
 - **💰 Financial Aid Services**: Comprehensive financial assistance, subsidies, and microloan applications
 - **📈 Market Intelligence**: Price alerts and market trend updates
 - **👥 Community Features**: Training programs and vendor community updates
 - **📱 WhatsApp Reporting**: Automated sales report generation and sharing via WhatsApp
+- **🤖 AI Logbook Scanning**: Camera-based handwritten logbook digitization with intelligent text extraction
 - **🎨 Modern Kiosk Interface**: Touch-optimized UI with prominent icons and intuitive navigation
 
 ## 📡 Data Sources & Integration
@@ -158,6 +159,10 @@ Live Prices → Data Processing → State Management → User Display
 PayNet APIs → Transaction Service → Analytics Engine → Dashboard
      ↓              ↓                    ↓              ↓
 Payment Data → Real-time Processing → Business Insights → Vendor Reports
+
+Camera Input → AI OCR Service → Data Parser → Sales Dashboard
+     ↓              ↓              ↓            ↓
+Logbook Photo → Text Extraction → Transaction Data → Live Updates
 ```
 
 ### Data Benefits for Vendors
@@ -171,6 +176,73 @@ Payment Data → Real-time Processing → Business Insights → Vendor Reports
 - **Customer Behavior**: Payment pattern analysis for business optimization
 - **Instant Reporting**: WhatsApp integration for immediate sales report sharing
 - **Mobile Accessibility**: Receive detailed reports directly on mobile devices
+- **Digital Transformation**: Convert handwritten logbooks to digital data instantly
+- **Accuracy Enhancement**: AI-powered text recognition for precise transaction extraction
+
+## 🤖 AI-Powered Logbook Scanning
+
+### Intelligent Document Processing
+VendorBridge revolutionizes traditional record-keeping by converting handwritten logbooks into digital data through advanced AI technology.
+
+#### **📸 Camera Integration**
+- **Live Camera Access**: Direct access to device camera with optimized settings for document capture
+- **Mobile-First Design**: Back-facing camera preference for mobile devices with high-resolution capture (1920x1080)
+- **Visual Guidance**: On-screen frame overlay to guide optimal logbook positioning
+- **Fallback Options**: File upload alternative for devices without camera access
+
+#### **🧠 AI Text Extraction**
+- **Handwriting Recognition**: Advanced OCR technology for Malaysian handwritten text
+- **Context-Aware Processing**: Understands Malaysian currency format (RM) and local transaction patterns
+- **Transaction Parsing**: Intelligent extraction of time, payment type, amounts, and item descriptions
+- **Data Validation**: Ensures extracted data integrity and accuracy
+
+#### **📊 Real-Time Dashboard Updates**
+- **Additive Processing**: New logbook entries add to existing sales data without overwriting
+- **Live Statistics**: Instant updates to total sales, cash/QR transaction counts, and amounts
+- **Transaction History**: Newly extracted transactions appear in recent activity feed
+- **Visual Feedback**: Processing states and success confirmations for user confidence
+
+#### **🎯 User Experience Flow**
+1. **📱 Navigate to Sales → Transaction Logging**
+2. **📸 Click "Upload Logbook Photo"** → Camera interface opens
+3. **🎯 Position logbook page** within visual frame guide
+4. **📷 Capture or upload** logbook image
+5. **🤖 AI Processing** → 2-4 second intelligent text extraction
+6. **✅ Data Integration** → Transactions parsed and validated
+7. **📊 Dashboard Update** → All sales metrics refresh automatically
+8. **🎉 Confirmation** → Success indicator with "Logbook Processed" status
+
+#### **🔧 Technical Implementation**
+```javascript
+// Camera API Integration
+navigator.mediaDevices.getUserMedia({
+  video: {
+    facingMode: 'environment', // Back camera for mobile
+    width: { ideal: 1920 },
+    height: { ideal: 1080 }
+  }
+})
+
+// AI Processing Pipeline
+const result = await processLogbookImage(imageData)
+if (result.success) {
+  updateSalesDashboard(result.data)
+}
+```
+
+#### **🚀 Production-Ready Architecture**
+The current implementation provides a complete working prototype. For production deployment, the system can integrate with:
+- **Google Cloud Vision API** for enterprise-grade OCR
+- **OpenAI GPT-4 Vision** for intelligent document understanding
+- **Custom ML Models** trained specifically on Malaysian logbook formats
+- **Tesseract.js** for client-side processing and offline capability
+
+#### **📈 Business Impact**
+- **Time Savings**: Eliminates manual data entry, reducing administrative overhead
+- **Accuracy Improvement**: Reduces human error in transaction recording
+- **Digital Transformation**: Bridges traditional paper-based systems with modern digital tools
+- **Accessibility**: Enables vendors with limited digital literacy to adopt digital record-keeping
+- **Compliance**: Creates digital audit trails for regulatory and financial requirements
 
 ## 📊 Impact & Transformation
 
@@ -209,7 +281,7 @@ graph TD
 1. **Welcome Screen**: Bilingual introduction with authentic Malaysian market background imagery
 2. **Authentication Flow**: MyKad card insertion with visual guidance → Fingerprint verification
 3. **Main Dashboard**: Central hub with prominent icon-based navigation and touch-optimized interface
-4. **Sales Module**: Daily sales tracking and reporting with visual analytics and WhatsApp integration
+4. **Sales Module**: Daily sales tracking and reporting with visual analytics, WhatsApp integration, and AI-powered logbook scanning
 5. **Financial Aid Module**: Comprehensive application profile, eligible subsidies, and featured loan programs
 6. **Government Services**: Direct access to official services and applications
 7. **Community Module**: Training programs, updates, and vendor networking
@@ -493,6 +565,13 @@ npm run lint     # Run ESLint
 - **Error Handling** - Graceful fallback mechanisms
 - **Data Caching** - Offline capability with sync
 
+### AI & Computer Vision
+- **Camera API Integration** - Native device camera access with MediaDevices API
+- **AI Text Extraction** - Intelligent OCR processing for handwritten logbooks
+- **Image Processing** - High-resolution capture and optimization
+- **Real-time Processing** - Live document scanning with visual feedback
+- **Data Parsing** - Context-aware transaction extraction and validation
+
 ### UI Components
 - **shadcn/ui** - Reusable component library
 - **Custom Components** - Tailored for kiosk interface
@@ -529,6 +608,7 @@ npm run lint     # Run ESLint
 - **Scrollable Content**: Vertical scrolling for eligible subsidies, horizontal scrolling for featured programs
 - **Non-scrollable Pages**: Fixed viewport design ensuring all content fits on single screen
 - **WhatsApp Integration**: One-click sales report generation with comprehensive daily and weekly analytics
+- **AI Logbook Digitization**: Camera-based scanning with intelligent handwriting recognition and transaction parsing
 
 ## 🔧 Customization
 

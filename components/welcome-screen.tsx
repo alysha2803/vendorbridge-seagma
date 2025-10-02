@@ -35,14 +35,13 @@ export default function WelcomeScreen({ onStart }: WelcomeScreenProps) {
               <p className="text-3xl text-white italic text-balance drop-shadow-lg">{t("welcome.subtitle")}</p>
             </div>
 
-            <div className="space-y-2">
+            <div>
               <Button
                 onClick={onStart}
                 className="bg-primary-dark hover:bg-primary-dark/90 text-white px-12 py-6 text-xl rounded-full shadow-xl"
               >
                 {t("welcome.button")}
               </Button>
-              <p className="text-white italic text-center text-lg drop-shadow-lg">Klik skrin untuk mula</p>
             </div>
           </div>
         </div>

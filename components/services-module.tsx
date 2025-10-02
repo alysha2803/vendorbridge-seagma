@@ -235,7 +235,7 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
                 rate: "3.5% p.a.",
                 description: "Special rate for market vendors",
                 status: "eligible",
-                url: "https://example.com/tekun-application",
+                url: "https://www.tekun.gov.my/skim-pembiayaan-tekun-mobilepreneur-4-0/",
               },
               {
                 name: "Agrobank Hawker Fund",

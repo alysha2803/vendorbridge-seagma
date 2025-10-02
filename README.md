@@ -114,6 +114,61 @@ VendorBridge establishes a reliable, human-assisted interface between market ven
 - **👥 Community Features**: Training programs and vendor community updates
 - **🎨 Modern Kiosk Interface**: Touch-optimized UI with prominent icons and intuitive navigation
 
+## 📡 Data Sources & Integration
+
+### Real-time Market Data
+VendorBridge integrates with official Malaysian government data sources to provide accurate, up-to-date market intelligence:
+
+#### **FAMA Price Data Integration**
+- **Source**: [Federal Agricultural Marketing Authority (FAMA)](https://www.fama.gov.my/harga-pasaran-terkini)
+- **Update Frequency**: Every 5 minutes
+- **Commodities Tracked**:
+  - Bawang Besar Merah (Import) - Large Red Onions
+  - Bayam - Spinach
+  - Cili Merah (Thailand) - Thai Red Chilies
+  - Daun Bawang - Spring Onions
+  - Kacang Bendi - Lady Fingers/Okra
+  - Timun Hijau - Green Cucumber
+- **Data Points**: Current prices, price changes, trend analysis, unit measurements
+- **Reliability**: Fallback system with cached data for continuous service
+
+#### **Government Services Integration**
+- **MyKad Authentication**: National identity card verification system
+- **DuitNow Payment Rails**: Malaysia's national payment infrastructure
+- **PayNet Transaction Data**: Real-time payment and transaction analytics
+- **SSM Business Registration**: Companies Commission of Malaysia data
+- **LHDN Tax Services**: Inland Revenue Board integration
+- **CTOS Credit Scoring**: Credit reporting services
+- **EPF & SOCSO**: Employee benefits and social security systems
+
+#### **Data Processing & Privacy**
+- **Real-time Processing**: Live data fetching with automatic refresh cycles
+- **Error Handling**: Graceful degradation with fallback mechanisms
+- **Data Privacy**: GDPR-compliant handling with explicit user consent
+- **Audit Trails**: Comprehensive logging for regulatory compliance
+- **Local Caching**: Offline capability with synchronized updates
+
+#### **API Architecture**
+```
+FAMA Website → VendorBridge API → Custom Hook → UI Components
+     ↓              ↓                ↓            ↓
+Live Prices → Data Processing → State Management → User Display
+
+PayNet APIs → Transaction Service → Analytics Engine → Dashboard
+     ↓              ↓                    ↓              ↓
+Payment Data → Real-time Processing → Business Insights → Vendor Reports
+```
+
+### Data Benefits for Vendors
+- **Informed Purchasing**: Real-time price trends for better buying decisions
+- **Pricing Strategy**: Market intelligence for competitive pricing
+- **Cost Management**: Track ingredient cost fluctuations
+- **Seasonal Planning**: Historical data patterns for menu planning
+- **Risk Mitigation**: Early warning system for price volatility
+- **Transaction Analytics**: PayNet data provides sales insights and payment trends
+- **Financial Planning**: Real-time revenue tracking and cash flow analysis
+- **Customer Behavior**: Payment pattern analysis for business optimization
+
 ## 📊 Impact & Transformation
 
 ### Data Visibility Revolution
@@ -179,6 +234,8 @@ graph TB
     
     subgraph "External Systems"
         GOV[Government APIs]
+        FAMA[FAMA Price Data]
+        PAYNET[PayNet Transaction Data]
         BANK[Banking Systems]
         PAY[Payment Providers]
         TRAIN[Training Platforms]
@@ -211,6 +268,8 @@ graph TB
     DN --> BANK
     DN --> PAY
     C --> TRAIN
+    S --> FAMA
+    S --> PAYNET
     
     S --> DB
     G --> DB
@@ -239,6 +298,9 @@ graph TB
 - **Fingerprint Scanner**: Biometric authentication
 - **Payment Gateway**: DuitNow QR integration
 - **Communication**: WhatsApp API for notifications
+- **FAMA Data Service**: Real-time market price integration
+- **PayNet Transaction Analytics**: Real-time payment data and transaction insights
+- **Government APIs**: SSM, LHDN, CTOS, EPF/SOCSO integration
 
 **Data Layer**
 - **Local Storage**: SQLite for offline capability
@@ -420,6 +482,13 @@ npm run lint     # Run ESLint
 - **Tailwind CSS** - Utility-first CSS framework
 - **Radix UI** - Accessible component primitives
 - **Lucide React** - Beautiful icon library
+
+### Data Integration
+- **FAMA API Integration** - Real-time market price data
+- **Custom React Hooks** - Data fetching and state management
+- **Automatic Refresh** - 5-minute update cycles
+- **Error Handling** - Graceful fallback mechanisms
+- **Data Caching** - Offline capability with sync
 
 ### UI Components
 - **shadcn/ui** - Reusable component library

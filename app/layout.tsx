@@ -5,9 +5,14 @@ import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'VendorBridge',
+  description: 'Your market management assistant - Digital kiosk system for Malaysian market vendors',
+  generator: 'VendorBridge',
+  icons: {
+    icon: '/vendor-bridge-logo-new.png',
+    shortcut: '/vendor-bridge-logo-new.png',
+    apple: '/vendor-bridge-logo-new.png',
+  },
 }
 
 export default function RootLayout({

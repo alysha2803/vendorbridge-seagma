@@ -78,19 +78,31 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+            <Button 
+              className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               Business License Renewal
             </Button>
-            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+            <Button 
+              className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               SSM Registration Services
             </Button>
-            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+            <Button 
+              className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               Local Council Permits
             </Button>
-            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+            <Button 
+              className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               Health Department Compliance
             </Button>
@@ -105,19 +117,31 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+            <Button 
+              className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               LHDN Tax Assistance
             </Button>
-            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+            <Button 
+              className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               SST Registration
             </Button>
-            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+            <Button 
+              className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               Tax Filing Support
             </Button>
-            <Button className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white">
+            <Button 
+              className="w-full justify-start bg-primary-dark hover:bg-primary-dark/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               EPF & SOCSO Registration
             </Button>
@@ -135,19 +159,31 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Button className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white">
+            <Button 
+              className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               Food Safety Certification
             </Button>
-            <Button className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white">
+            <Button 
+              className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               Weights & Measures Compliance
             </Button>
-            <Button className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white">
+            <Button 
+              className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               Fire Safety Inspection
             </Button>
-            <Button className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white">
+            <Button 
+              className="w-full justify-start bg-accent-cyan hover:bg-accent-cyan/90 text-white"
+              onClick={() => window.open("https://elesen.dbkl.gov.my/Portal/application.aspx", "_blank")}
+            >
               <ExternalLink className="w-4 h-4 mr-2" />
               Environmental Compliance
             </Button>
@@ -654,7 +690,11 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
                 </div>
                 <div className="text-sm text-gray-600 mb-2">{workshop.date}</div>
                 <div className="text-sm text-gray-700 mb-3">{workshop.description}</div>
-                <Button size="sm" className="bg-primary-dark hover:bg-primary-dark/90 text-white">
+                <Button 
+                  size="sm" 
+                  className="bg-primary-dark hover:bg-primary-dark/90 text-white"
+                  onClick={() => window.open("https://www.insken.gov.my/inbt-kursus-asas-industri-gerai-makanan-penjaja-lembah-klang/", "_blank")}
+                >
                   {t("training.register")}
                 </Button>
               </div>

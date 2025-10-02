@@ -107,11 +107,12 @@ VendorBridge establishes a reliable, human-assisted interface between market ven
 
 - **🔐 Secure Authentication**: MyKad integration with fingerprint verification
 - **🌐 Multilingual Support**: English and Bahasa Malaysia interface
-- **📊 Sales Management**: Track daily sales and generate reports
+- **📊 Sales Management**: Track daily sales and generate reports with WhatsApp integration
 - **🏛️ Government Services**: Direct access to official services and applications
 - **💰 Financial Aid Services**: Comprehensive financial assistance, subsidies, and microloan applications
 - **📈 Market Intelligence**: Price alerts and market trend updates
 - **👥 Community Features**: Training programs and vendor community updates
+- **📱 WhatsApp Reporting**: Automated sales report generation and sharing via WhatsApp
 - **🎨 Modern Kiosk Interface**: Touch-optimized UI with prominent icons and intuitive navigation
 
 ## 📡 Data Sources & Integration
@@ -168,6 +169,8 @@ Payment Data → Real-time Processing → Business Insights → Vendor Reports
 - **Transaction Analytics**: PayNet data provides sales insights and payment trends
 - **Financial Planning**: Real-time revenue tracking and cash flow analysis
 - **Customer Behavior**: Payment pattern analysis for business optimization
+- **Instant Reporting**: WhatsApp integration for immediate sales report sharing
+- **Mobile Accessibility**: Receive detailed reports directly on mobile devices
 
 ## 📊 Impact & Transformation
 
@@ -206,7 +209,7 @@ graph TD
 1. **Welcome Screen**: Bilingual introduction with authentic Malaysian market background imagery
 2. **Authentication Flow**: MyKad card insertion with visual guidance → Fingerprint verification
 3. **Main Dashboard**: Central hub with prominent icon-based navigation and touch-optimized interface
-4. **Sales Module**: Daily sales tracking and reporting with visual analytics
+4. **Sales Module**: Daily sales tracking and reporting with visual analytics and WhatsApp integration
 5. **Financial Aid Module**: Comprehensive application profile, eligible subsidies, and featured loan programs
 6. **Government Services**: Direct access to official services and applications
 7. **Community Module**: Training programs, updates, and vendor networking
@@ -297,7 +300,7 @@ graph TB
 - **MyKad Reader**: Hardware integration for identity verification
 - **Fingerprint Scanner**: Biometric authentication
 - **Payment Gateway**: DuitNow QR integration
-- **Communication**: WhatsApp API for notifications
+- **Communication**: WhatsApp API for notifications and sales reporting
 - **FAMA Data Service**: Real-time market price integration
 - **PayNet Transaction Analytics**: Real-time payment data and transaction insights
 - **Government APIs**: SSM, LHDN, CTOS, EPF/SOCSO integration
@@ -525,6 +528,7 @@ npm run lint     # Run ESLint
 - **Financial Aid Dashboard**: Comprehensive application profile with institutional logos (SSM, CTOS, LHDN, Maybank)
 - **Scrollable Content**: Vertical scrolling for eligible subsidies, horizontal scrolling for featured programs
 - **Non-scrollable Pages**: Fixed viewport design ensuring all content fits on single screen
+- **WhatsApp Integration**: One-click sales report generation with comprehensive daily and weekly analytics
 
 ## 🔧 Customization
 

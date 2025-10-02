@@ -67,7 +67,8 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
   }
 
   const renderGovernmentServices = () => (
-    <div className="space-y-6">
+    <div className="h-[calc(100vh-12rem)] overflow-y-auto">
+      <div className="space-y-6 pb-6">
       {/* Government Services Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card className="bg-white">
@@ -190,11 +191,13 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   )
 
   const renderLoansIncentives = () => (
-    <div className="h-[calc(100vh-12rem)] overflow-hidden flex flex-col space-y-4">
+    <div className="h-[calc(100vh-12rem)] overflow-y-auto">
+      <div className="flex flex-col space-y-4 pb-6">
       {/* Application Profile Section */}
       <Card className="bg-white flex-shrink-0">
         <CardHeader className="pb-3">
@@ -396,6 +399,7 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   )
 
@@ -403,7 +407,8 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
     const { prices, loading, error, lastUpdated } = useFAMAPrices()
     
     return (
-      <div className="h-[calc(100vh-12rem)] overflow-hidden">
+      <div className="h-[calc(100vh-12rem)] overflow-y-auto">
+        <div className="pb-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
           <Card className="bg-white flex flex-col">
             <CardHeader className="flex-shrink-0">
@@ -506,12 +511,14 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
           </CardContent>
         </Card>
       </div>
+      </div>
     </div>
   )
   }
 
   const renderCommunityUpdates = () => (
-    <div className="h-[calc(100vh-12rem)] overflow-hidden">
+    <div className="h-[calc(100vh-12rem)] overflow-y-auto">
+      <div className="pb-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
         {/* Community Profile Card */}
         <Card className="bg-white flex flex-col">
@@ -649,12 +656,14 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
           </CardContent>
         </Card>
       </div>
+      </div>
     </div>
   )
 
   const renderTraining = () => (
-    <div className="h-[calc(100vh-12rem)] overflow-hidden">
-      <Card className="bg-white h-full">
+    <div className="h-[calc(100vh-12rem)] overflow-y-auto">
+      <div className="pb-6">
+      <Card className="bg-white">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <GraduationCap className="w-5 h-5" />
@@ -702,6 +711,7 @@ export default function ServicesModule({ moduleType, onBack }: ServicesModulePro
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   )
 
